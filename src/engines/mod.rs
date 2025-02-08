@@ -1,5 +1,4 @@
 use crate::error::Result;
-use crate::network::Network;
 use crate::types::{SearchOptions, SearchResult};
 use async_trait::async_trait;
 
@@ -28,7 +27,7 @@ pub trait ImageSearch: Send + Sync {
     /// Search for an image using raw bytes
     async fn search_bytes(
         &self,
-        bytes: &[u8],
+        _bytes: &[u8],
         options: &SearchOptions,
     ) -> Result<(String, Vec<SearchResult>)> {
         Ok(("".to_string(), self.search_url("", options).await?.1))
@@ -50,6 +49,7 @@ pub mod google;
 pub mod google_lens;
 pub mod iqdb;
 pub mod saucenao;
+pub mod soutubot;
 pub mod yandex;
 // pub mod baidu;
 // pub mod bing;
@@ -62,4 +62,5 @@ pub use google::Google;
 pub use google_lens::GoogleLens;
 pub use iqdb::Iqdb;
 pub use saucenao::SauceNao;
+pub use soutubot::Soutubot;
 pub use yandex::Yandex;
