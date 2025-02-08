@@ -1,6 +1,6 @@
-# PicImageSearch-rs
+# ReverseImageSearch-rs
 
-PicImageSearch-rs 是一个 Rust 实现的多引擎图片搜索聚合工具。支持通过图片 URL、本地文件在多个搜索引擎中进行以图搜图。
+ReverseImageSearch-rs 是一个 Rust 实现的多引擎图片搜索聚合工具。支持通过图片 URL、本地文件在多个搜索引擎中进行以图搜图。
 
 ## 功能特点
 
@@ -24,17 +24,43 @@ PicImageSearch-rs 是一个 Rust 实现的多引擎图片搜索聚合工具。�
 
 ## 安装
 
-将以下依赖添加到 `Cargo.toml`:
+目前项目尚未发布到 crates.io，你可以通过以下方式使用：
+
+1. 通过 Git 依赖安装：
 
 ```toml
 [dependencies]
-pic-image-search = "0.1.0"
+reverse-image-search = { git = "https://github.com/luoxuebinfei/ReverseImageSearch-rs" }
+```
+
+2. 或者克隆到本地后通过路径依赖：
+
+```toml
+[dependencies]
+reverse-image-search = { path = "../ReverseImageSearch-rs" }
+```
+
+3. 如果你想自己构建：
+
+```bash
+# 克隆仓库
+git clone https://github.com/luoxuebinfei/ReverseImageSearch-rs
+cd ReverseImageSearch-rs
+
+# 构建
+cargo build
+
+# 运行测试
+cargo test
+
+# 运行示例
+cargo run --example basic
 ```
 
 ## 使用示例
 
 ```rust
-use pic_image_search::{
+use reverse_image_search::{
     engines::{Ascii2d, Google, GoogleLens, Iqdb, SauceNao, Soutubot, Yandex},
     types::SearchOptions,
     ImageSearch,

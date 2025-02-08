@@ -1,8 +1,7 @@
 [package]
-name = "pic-image-search"
+name = "reverse-image-search"
 version = "0.1.0"
 edition = "2021"
-authors = ["Your Name <your.email@example.com>"]
 description = "A Rust implementation of reverse image search aggregator"
 license = "MIT"
 
