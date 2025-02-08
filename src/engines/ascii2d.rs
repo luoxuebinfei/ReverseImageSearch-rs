@@ -1,23 +1,18 @@
 use super::ImageSearch;
 use crate::error::{Error, Result};
-use crate::network::Network;
 use crate::types::{AdditionalInfo, SearchOptions, SearchResult};
-use crate::utils::{bytes_to_base64, normalize_url};
+use crate::utils::normalize_url;
 use async_trait::async_trait;
 use reqwest::multipart;
 use scraper::{Html, Selector};
 
 const API_URL: &str = "https://ascii2d.net";
 
-pub struct Ascii2d {
-    network: Network,
-}
+pub struct Ascii2d {}
 
 impl Ascii2d {
     pub fn new() -> Self {
-        Self {
-            network: Network::new(),
-        }
+        Self {}
     }
 
     fn build_client() -> Result<reqwest::Client> {

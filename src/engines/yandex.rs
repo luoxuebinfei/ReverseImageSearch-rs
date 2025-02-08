@@ -12,7 +12,6 @@ use reqwest::header::{
 use reqwest::multipart;
 use scraper::{Html, Selector};
 use serde_json::Value;
-use std::fs;
 
 #[derive(Debug)]
 pub struct Yandex {
@@ -91,7 +90,7 @@ impl Yandex {
                                 .get("domain")
                                 .and_then(|v| v.as_str())
                                 .unwrap_or_default();
-                            let content = site
+                            let _content = site
                                 .get("description")
                                 .and_then(|v| v.as_str())
                                 .unwrap_or_default();
@@ -159,13 +158,6 @@ impl Yandex {
     async fn parse_results(&self, html: &str) -> Result<Vec<SearchResult>> {
         let results = Self::parse_html(html)?;
         Ok(results)
-    }
-
-    async fn save_html(html: &str, prefix: &str) -> Result<()> {
-        let timestamp = chrono::Local::now().format("%Y%m%d_%H%M%S");
-        let filename = format!("{}_{}.html", prefix, timestamp);
-        fs::write(&filename, html)?;
-        Ok(())
     }
 }
 

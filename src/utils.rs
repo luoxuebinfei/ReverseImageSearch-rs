@@ -1,8 +1,8 @@
-use crate::error::{Error, Result};
+use crate::error::Result;
 use base64::{engine::general_purpose::STANDARD as BASE64, Engine as _};
-use image::codecs::jpeg::JpegEncoder;
 use std::io::Cursor;
 use std::path::Path;
+
 
 pub async fn image_to_base64<P: AsRef<Path>>(path: P) -> Result<String> {
     let img = image::open(path)?;

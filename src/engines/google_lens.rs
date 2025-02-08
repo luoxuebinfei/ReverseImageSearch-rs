@@ -1,6 +1,5 @@
 use super::ImageSearch;
 use crate::error::{Error, Result};
-use crate::network::Network;
 use crate::types::{AdditionalInfo, SearchOptions, SearchResult};
 use async_trait::async_trait;
 use regex;
@@ -10,15 +9,11 @@ use serde_json::Value;
 
 const API_URL: &str = "https://lens.google.com";
 
-pub struct GoogleLens {
-    network: Network,
-}
+pub struct GoogleLens {}
 
 impl GoogleLens {
     pub fn new() -> Self {
-        Self {
-            network: Network::new(),
-        }
+        Self {}
     }
 
     fn build_client(redirect: bool) -> Result<reqwest::Client> {

@@ -1,7 +1,7 @@
 use crate::error::Result;
 use bytes::Bytes;
 use log::debug;
-use reqwest::header::{HeaderMap, HeaderValue, USER_AGENT};
+use reqwest::header::HeaderMap;
 use reqwest::{Client, Response};
 use std::time::Duration;
 

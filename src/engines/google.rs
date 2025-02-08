@@ -1,15 +1,10 @@
 use super::ImageSearch;
 use crate::error::{Error, Result};
-use crate::network::Network;
 use crate::types::{AdditionalInfo, SearchOptions, SearchResult};
-use crate::utils::{bytes_to_base64, normalize_url};
 use async_trait::async_trait;
-use image;
 use regex;
 use reqwest::multipart;
 use scraper::{Html, Selector};
-use serde::Deserialize;
-use url;
 
 const API_URL: &str = "https://www.google.com";
 
@@ -21,15 +16,11 @@ pub struct GoogleResponse {
     pub url: String,
 }
 
-pub struct Google {
-    network: Network,
-}
+pub struct Google {}
 
 impl Google {
     pub fn new() -> Self {
-        Self {
-            network: Network::new(),
-        }
+        Self {}
     }
 
     fn build_client() -> Result<reqwest::Client> {
@@ -241,7 +232,7 @@ impl ImageSearch for Google {
     async fn search_bytes(
         &self,
         bytes: &[u8],
-        options: &SearchOptions,
+        _options: &SearchOptions,
     ) -> Result<(String, Vec<SearchResult>)> {
         let client = Self::build_client()?;
 
